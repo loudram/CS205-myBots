@@ -78,7 +78,7 @@ class NEURON:
     
     def Update_Hidden_Or_Motor_Neuron(self, neurons, synapses):
         self.Set_Value(0)
-        print("Pre Loop Neuron Value: " +  str(self.Get_Value()))
+        #print("Pre Loop Neuron Value: " +  str(self.Get_Value()))
         
         for key in synapses:
             if(key[1] == self.Get_Name()):
@@ -86,8 +86,9 @@ class NEURON:
                 # print("Presynaptic Neuron: " + key[0])
                 # print("Postsynaptic Neuron: " + key[1])
         
-        print("Post Loop Neuron Value: " + str(self.Get_Value()))
-        exit()
+        self.Threshold()
+        #print("Post Loop Neuron Value: " + str(self.Get_Value()))
+        #exit()
     
 
         
