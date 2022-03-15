@@ -12,4 +12,5 @@ phase_offset_front_leg = pi/4
 program_run_time = 100
 gravity = -9.8
 sleep_time = 1/240
+numberOfGenerations = 2
 

@@ -54,4 +54,5 @@ class ROBOT:
         print("========")
         f = open("fitness.txt","w")
         f.write(str(xCoordinateOfLinkZero))
+        f.close()
         exit()
