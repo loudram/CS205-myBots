@@ -1,4 +1,4 @@
-from solution import SOLUTION
+from solution import *
 import numpy as numpy
 from constants import *
 import copy
@@ -9,14 +9,19 @@ class HILL_CLIMBER:
         
 
     def Evolve(self):
-        self.parent.Evaluate()
+        
+        self.parent.Evaluate("GUI")
         for currentGeneration in range(numberOfGenerations):
             self.Evolve_For_One_Generation()
     
+    def Show_Best(self): 
+        self.parent.Evaluate("GUI")
+
     def Evolve_For_One_Generation(self):
         self.Spawn()
         self.Mutate()
-        self.child.Evaluate()
+        self.child.Evaluate("DIRECT")
+        self.Print()
         self.Select()
 
     def Spawn(self):
@@ -24,18 +29,16 @@ class HILL_CLIMBER:
 
     def Mutate(self):
         self.child.Mutate()
-
-
-    def Evaluate(self):
-        pass
+        print(self.child.fitness)
+        print(self.parent.fitness)
 
     def Select(self):
         if (self.parent.fitness < self.child.fitness):
             self.parent = self.child
 
-
-        
-            
+    def Print(self):
+        #print("parent fitness: " + str(self.parent.fitness) + " child fitness: " + str(self.child.fitness))
+        pass
 
 
 

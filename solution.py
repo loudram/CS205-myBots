@@ -18,7 +18,8 @@ class SOLUTION:
 
 
         self.weights = self.weights * 2 - 1
-
+        
+        
 
         # print(self.weights)
 
@@ -26,15 +27,16 @@ class SOLUTION:
         randomRow = random.randint(0, 2)
         randomColumn = random.randint(0, 1)
         self.weights[randomRow,randomColumn] = random.random() * 2 - 1
+        self.Create_Brain()
 
-    def Evaluate(self):
-        os.system("python3 simulate.py")
+    def Evaluate(self, view):
+        file = "python3 simulate.py " + view
+        os.system(file)
         f = open("fitness.txt","r")
         self.fitness = float(f.read())
         f.close()
-        
 
-    def Create_World():
+    def Create_World(self):
 
 
         pyrosim.Start_SDF("world.sdf")
@@ -46,9 +48,7 @@ class SOLUTION:
         pyrosim.End()
 
 
-
-
-    def Create_Body():
+    def Create_Body(self):
 
 
         pyrosim.Start_URDF("body.urdf")
@@ -83,9 +83,7 @@ class SOLUTION:
         pyrosim.End()
 
 
-
-
-    def Create_Brain():
+    def Create_Brain(self):
 
 
         pyrosim.Start_NeuralNetwork("brain.nndf")
