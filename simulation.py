@@ -9,6 +9,7 @@ import numpy
 
 class SIMULATION:
     def __init__(self, directOrGUI):
+        self.directOrGUI = directOrGUI
         if (directOrGUI == "DIRECT"):
             self.physicsClient = p.connect(p.DIRECT)
         else:
@@ -29,7 +30,9 @@ class SIMULATION:
             self.robot.Sense(x)
             self.robot.Think()
             self.robot.Act(x, self.robot)
-            time.sleep(c.sleep_time)
+            if (self.directOrGUI == "GUI"):
+                time.sleep(c.sleep_time)
+
     
     def Get_Fitness(self):
         self.robot.Get_Fitness()

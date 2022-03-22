@@ -11,6 +11,6 @@ frequency_front_leg = 15
 phase_offset_front_leg = pi/4
 program_run_time = 1000
 gravity = -9.8
-sleep_time = 1/480
+sleep_time = 1/240
 numberOfGenerations = 10
 
