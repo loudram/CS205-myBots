@@ -8,7 +8,7 @@ import pyrosim.pyrosim as pyrosim
 import numpy
 
 class SIMULATION:
-    def __init__(self, directOrGUI):
+    def __init__(self, directOrGUI, solutionID):
         self.directOrGUI = directOrGUI
         if (directOrGUI == "DIRECT"):
             self.physicsClient = p.connect(p.DIRECT)
@@ -18,7 +18,7 @@ class SIMULATION:
         p.setGravity(0,0,c.gravity)
 
         self.world = WORLD()
-        self.robot = ROBOT()
+        self.robot = ROBOT(solutionID)
 
     
     def __del__(self):

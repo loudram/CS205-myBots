@@ -13,4 +13,4 @@ program_run_time = 1000
 gravity = -9.8
 sleep_time = 1/240
 numberOfGenerations = 10
-
+populationSize = 2
