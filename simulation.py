@@ -16,7 +16,7 @@ class SIMULATION:
             self.physicsClient = p.connect(p.GUI)
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         p.setGravity(0,0,c.gravity)
-
+        self.solutionID = solutionID
         self.world = WORLD()
         self.robot = ROBOT(solutionID)
 
@@ -35,4 +35,4 @@ class SIMULATION:
 
     
     def Get_Fitness(self):
-        self.robot.Get_Fitness()
+        self.robot.Get_Fitness(self.solutionID)
