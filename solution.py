@@ -22,9 +22,9 @@ class SOLUTION:
         self.weights[randomRow,randomColumn] = random.random() * 2 - 1
     
     def Start_Simulation(self, view):
+        self.Create_World(self.myID)
         self.Create_Brain(self.myID)
-        self.Create_World()
-        self.Create_Body()
+        self.Create_Body(self.myID)
         file = "START /B python3 simulate.py " + view + " " + str(self.myID)
         os.system(file)
         
@@ -37,7 +37,8 @@ class SOLUTION:
         #print(self.fitness)
         f.close()
         os.system("del fitness" + str(self.myID) + ".txt")
-    
+        os.system("del world" + str(self.myID) + ".sdf")
+        os.system("del body" + str(self.myID) + ".urdf")
     def Evaluate(self, view):
         file = "START /B python3 simulate.py " + view + " " + str(self.myID)
         os.system(file)
@@ -53,10 +54,10 @@ class SOLUTION:
         print(self.fitness)
         f.close()
 
-    def Create_World(self):
+    def Create_World(self, myID):
 
 
-        pyrosim.Start_SDF("world.sdf")
+        pyrosim.Start_SDF("world" + str(myID) + ".sdf")
 
 
         #pyrosim.Send_Cube(name="Box", pos=[1, 1, .5], size=[1, 1, 1])
@@ -65,10 +66,10 @@ class SOLUTION:
         pyrosim.End()
 
 
-    def Create_Body(self):
+    def Create_Body(self, myID):
 
 
-        pyrosim.Start_URDF("body.urdf")
+        pyrosim.Start_URDF("body" + str(myID) + ".urdf")
 
 
         pyrosim.Send_Cube(name="Torso", pos=[0, 0, 1], size=[1, 1, 1])
@@ -144,7 +145,6 @@ class SOLUTION:
 
 
         pyrosim.Start_NeuralNetwork("brain" + str(myID) + ".nndf")
-        print("brain" + str(myID) + ".nndf")
         pyrosim.Send_Sensor_Neuron(name=0, linkName="Torso")
         pyrosim.Send_Sensor_Neuron(name=1, linkName="BackRightLeg")
         pyrosim.Send_Sensor_Neuron(name=2, linkName="BackLeftLeg")

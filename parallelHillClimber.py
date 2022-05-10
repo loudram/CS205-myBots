@@ -7,6 +7,8 @@ class PARALLEL_HILL_CLIMBER:
     def __init__(self):
         os.system("del brain*.nndf")
         os.system("del fitness*.nndf")
+        os.system("del body*.urdf")
+        os.system("del robot*.txt")
         self.nextAvailableID = 0
         self.parents = dict()
         for x in range(populationSize):
@@ -57,6 +59,12 @@ class PARALLEL_HILL_CLIMBER:
         for x in range (self.parents.__len__()):
             if (self.parents[x].fitness < self.children[x].fitness):
                 self.parents[x] = self.children[x]
+            
+            # track the best fitness score of each robot in the population over time
+            f = open("robot" + str(x) + ".txt","a")
+            f.write(str(self.parents[x].fitness) + "\n")
+            f.close()
+            
 
     def Print(self):
         for x in range (self.parents.__len__()):
